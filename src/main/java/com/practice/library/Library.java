@@ -73,9 +73,26 @@ public class Library {
         kitab.setAvailableCopies(kitab.getAvailableCopies()-1);
     }
 
-    public static void main ( String [] args){
+    public void DeleteBooks(int id){
+        KitabKhana book =Optional.ofNullable(catalog.get(id)).orElseThrow (() ->(new BooksNotFound(id + " thiw id is not found ")));
+        catalog.remove(id);
+        books.remove(book);
+        System.out.println(" Deleted : " + book.getTitle());
+        }
+        public static void main ( String [] args){
         Library library = new Library();
         library.loadfromfile("library.txt");
+            library.addbooks(new KitabKhana(1,"The Kite Runner","Khaled Hosseini",12,4));
+            library.addbooks(new KitabKhana(2,"If cats disappeared from the world","Genki Kuruwama",1,0));
+            library.addbooks(new KitabKhana(3,"Crime and Punishment","Fyodor Dostoesky",6,6));
+            library.addbooks(new KitabKhana(4,"Days at the Morasaki Bookshop","Yagisawa",7,3));
+            library.addbooks(new KitabKhana(5,"The Metamorphisis","Franz Kafka",1,1));
+            library.addbooks(new KitabKhana(6,"The Atomic Habit","James Clear",21,16));
+
+            library.DeleteBooks(2);
+
+            library.print();
+
 
 
 
