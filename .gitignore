@@ -1,3 +1,5 @@
+.idea/
+
 target/
 library.txt
 !.mvn/wrapper/maven-wrapper.jar
